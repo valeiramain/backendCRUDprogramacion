@@ -5,6 +5,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import './bdConfig.js'
 
 // se crea un objeto que represente al SERVIDOR. el back-end Siempre tiene que estar ejecutándose
 export default class Server {
