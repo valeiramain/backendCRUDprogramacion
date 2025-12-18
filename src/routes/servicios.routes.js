@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { crearServicio, prueba } from "../controllers/servicios.controllers.js";
+
 
 const router = Router();
 
@@ -7,9 +9,11 @@ const router = Router();
 
 
 //definir los metodos que se ejecutaran en esta ruta
-router.route('/test').get((req,res)=>{
-    console.log('consulta de prueba')
-    res.send('ejemplo de respuesta desde el backend')
-})
+router.route('/test').get(prueba)
+
+
+//ALTA
+router.route('/'.post(crearServicio))
+
 
 export default router
