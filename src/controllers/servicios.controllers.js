@@ -28,10 +28,10 @@ export const crearServicio = async (req, res) => {
     }
 }
 
-// GET - LISTAR
+// GET - LISTAR todos los servicios
 export const listarServicios = async (req, res) => {
     try {
-        // ejecuto query find()
+        // ejecuto query find() de mongoose
         const servicios = await Servicio.find()
         // responde mandando el array de servicios
         res.status(200).json(servicios)
@@ -39,4 +39,21 @@ export const listarServicios = async (req, res) => {
         console.error(error)
         res.status(500).json({ mensaje: 'Ocurrió un error al intentar listar los servicio' })
     }
+}
+
+// GET POR ID
+export const obtenerServicioId = async (req, res) => {
+    try {
+        console.log(req.params.id)
+        const servicioBuscado = await Servicio.findById(req.params.id)
+        if (!servicioBuscado) {
+            return res.status(404).json({ mensaje: 'No se encontró un servicio con el ID enviado' })
+        }
+        res.status(200).json(servicioBuscado)
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ mensaje: 'Ocurrió un error al intentar buscar el servicio por ID' })
+    }
+
 }
