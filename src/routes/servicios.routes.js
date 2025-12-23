@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crearServicio, listarServicios, obtenerServicioId, prueba } from "../controllers/servicios.controllers.js";
+import { crearServicio, editarServicio, listarServicios, obtenerServicioId, prueba } from "../controllers/servicios.controllers.js";
 
 
 const router = Router();
@@ -16,7 +16,7 @@ router.route('/test').get(prueba)
 //contruir la ruta: http://localhost:3000/api/servicios/
 router.route('/').post(crearServicio).get(listarServicios)
 // ruta GET por ID
-router.route('/:id').get(obtenerServicioId)
+router.route('/:id').get(obtenerServicioId).put(editarServicio)
 
 
 
