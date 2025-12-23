@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { crearServicio, prueba } from "../controllers/servicios.controllers.js";
+import { crearServicio, listarServicios, prueba } from "../controllers/servicios.controllers.js";
 
 
 const router = Router();
@@ -12,9 +12,12 @@ const router = Router();
 router.route('/test').get(prueba)
 
 
-//RUTA ALTA - POST
+//RUTA alta: POST, listar: GET
 //contruir la ruta: http://localhost:3000/api/servicios/
-router.route('/').post(crearServicio)
+router.route('/').post(crearServicio).get(listarServicios)
+
+
+
 
 
 export default router
