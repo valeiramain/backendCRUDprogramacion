@@ -21,7 +21,7 @@ Un servicio backend robusto para gestionar servicios de programación, construid
 
 - Manejo de errores - Middleware para errores personalizados
 
-#  Prerrequisitos
+# 🗒️ Prerrequisitos
 
 - Node.js (v14 o superior)
 
@@ -29,34 +29,67 @@ Un servicio backend robusto para gestionar servicios de programación, construid
 
 - npm o yarn
 
-# Instalación
+## ⚙️ Instalación
+
+1. Clonar el Repositorio
+
+```
+git clone https://github.com/valeiramain/backendCRUDprogramacion.git
+cd backendCRUDprogramacion
+```
+
+2. Intalar dependencias
+
+```
+npm install
+```
+
+3. Variables de entorno necesarias
+
 
 usa la estructura del archivo .env.example y reemplazalo con tus valores
 
+```nodejs
+PORT=3000
+MONGODB=mongodb://localhost:21017/servicios-proramacion
+```
+
+# 🚀 Ejecutar el proyectp
+
+- Comando para probar el proyecto en producción
+
+```
+npm start
+```
+
+- Comando para probar el proyecto en desarrollo
+
+```
+npm run dev
+```
 
 
-# 🚀 Endpoints de la API
+# 📡 Endpoints de la API
 
-## Servicios
+## Servicios:
+Estos son los servicios de programación que brinda el proyecto
 
 URL: /api/servicios
 
 ### Listar Servicios
-Listar todos los servicios del proyecto
+Listar todos los servicios de programación del proyecto
 
 - URL:  http://localhost:3000/api/servicios
 - method: GET
 
-
 Respuestas:
 
-  - 200: ok
-  - 500: Error interno del servidor
+    - 200: ok
+    - 500: Error interno del servidor
 
 
 ### Crear Servicio
 Podemos crear un servicio enviando una solicitud del siguiente tipo:
-
 
 - URL:  http://localhost:3000/api/servicios
 - method: POST
@@ -76,9 +109,9 @@ Podemos crear un servicio enviando una solicitud del siguiente tipo:
 
 Respuestas:
 
-  - 200: OK
-  - 400: Bad Request
-  - 500: Error interno del servidor
+    - 200: OK
+    - 400: Bad Request
+    - 500: Error interno del servidor
   
 
 
@@ -92,7 +125,7 @@ Podemos editar todos los datos de un servicio enviando una solicitud del siguien
 - body: 
  ```json
 {
-        "servicio": "Matenimiento de sitio web",
+        "servicio": "Matenimiento de sitio web editado (PUT)",
         "precio": 50,
         "imagen": "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg",
         "categoria": "Desarrollo Web",
@@ -104,31 +137,32 @@ Podemos editar todos los datos de un servicio enviando una solicitud del siguien
 
 Respuestas:
 
-  - 201: Creado
-  - 400: Bad Request
-  - 404: Servicio no encontrado
-  - 500: Error interno del servidor
-  
+    - 200: oK
+    - 400: Bad Request
+    - 404: Servicio no encontrado
+    - 500: Error interno del servidor
 
 
 ### Borrar Servicio
-Podemos borrar un servicio enviando un ID
+Podemos borrar un servicio enviando ID del servicio
 
 - URL:  ```http://localhost:3000/api/servicios/{servicio_id}```
 - method: DELETE
 
 Respuestas:
 
-  - 200: OK
-  - 400: Bad Request
-  - 404: Servicio no encontrado
-  - 500: Error interno del servidor
-  
+    - 200: OK
+    - 400: Bad Request
+    - 404: Servicio no encontrado
+    - 500: Error interno del servidor
 
 
 ## Usuarios
+## Categorias
 proximamente
 
 ## 🙍‍♀️Autor
 
-Valentina Iramain
+  - Valentina Iramain
+  - LinkedIn: https://www.linkedin.com/in/valentina-iramain-94a208359
+  - GitHub: https://github.com/valeiramain
