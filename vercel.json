@@ -1,13 +1,17 @@
 {
     "builds": [
         {
+            // donde esta el archivo principal
             "src": "./index.js",
+            // con que esta hecho el proyecto
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
+            // cual es el origen de la ruta de backend
             "src": "/(.*)",
+            // destino es la ruta principal (dominio)
             "dest": "/"
         }
     ]
