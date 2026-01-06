@@ -54,7 +54,7 @@ PORT=3000
 MONGODB=mongodb://localhost:21017/servicios-proramacion
 ```
 
-# 🚀 Ejecutar el proyectp
+# 🚀 Ejecutar el proyecto
 
 - Comando para probar el proyecto en producción
 
