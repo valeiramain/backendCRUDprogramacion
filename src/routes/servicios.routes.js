@@ -19,6 +19,6 @@ router.route('/test').get(prueba)
 router.route('/').post([validacionServicio],crearServicio).get(listarServicios)
 
 // ruta GET por ID
-router.route('/:id').get(obtenerServicioId).put(editarServicio).delete(borrarServicio)
+router.route('/:id').get(obtenerServicioId).put([validacionServicio],editarServicio).delete(borrarServicio)
 
 export default router
