@@ -20,9 +20,11 @@ const validacionServicio = [
             if (!servicioExistente) {
                 return true
             }
-            // corregir el paso en caso de EDITAR. verificar ID
-            //? para que si no existe ID no de undefined
+            // en el "req" hay un parametro? y tiene el mismo ID que el servicio existente
+            //? para que si no existe ID no de undefined 
+            //pregunta para validar si estoy editando el mismo servicio
             if (req.params?.id && servicioExistente._id.toString() === req.params.id) {
+                // confirma que puede cambiar el servicio porque coinciden los IDs
                 return true
             }
             throw new Error('El servicio ya existe en la base de datos')

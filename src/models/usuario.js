@@ -25,9 +25,9 @@ const usuarioSchema = new Schema(
       type: String,
       required: true,
       validate: {
-        // valor es la imagen
         validator: (valor) => {
-          return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/.test(
+          // se cambia a 64 caracteres maximo para soportar hash
+          return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,64}$/.test(
             valor
           );
         },
@@ -40,6 +40,6 @@ const usuarioSchema = new Schema(
 );
 
 // el nombre del modelo va en SINGULAR
-const Usuario = mongoose.model("servicio", usuarioSchema);
+const Usuario = mongoose.model("usuario", usuarioSchema);
 
 export default Usuario;

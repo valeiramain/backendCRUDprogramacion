@@ -30,8 +30,8 @@ router
 // ruta GET por ID
 router
   .route("/:id")
-  .get([validacionIdServicio],obtenerServicioId)
-  .put([validacionServicio, validacionIdServicio], editarServicio)
+  .get([validacionIdServicio], obtenerServicioId)
+  .put([validacionIdServicio, validacionServicio], editarServicio)
   .delete([validacionIdServicio], borrarServicio);
 
 export default router;
