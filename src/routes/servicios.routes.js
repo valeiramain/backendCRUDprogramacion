@@ -30,7 +30,7 @@ router
 // ruta GET por ID
 router
   .route("/:id")
-  .get(obtenerServicioId)
+  .get([validacionIdServicio],obtenerServicioId)
   .put([validacionServicio, validacionIdServicio], editarServicio)
   .delete([validacionIdServicio], borrarServicio);
 
