@@ -21,6 +21,10 @@ const validacionServicio = [
                 return true
             }
             // corregir el paso en caso de EDITAR. verificar ID
+            //? para que si no existe ID no de undefined
+            if (req.params?.id && servicioExistente._id.toString() === req.params.id) {
+                return true
+            }
             throw new Error('El servicio ya existe en la base de datos')
         }),
     body('precio')
