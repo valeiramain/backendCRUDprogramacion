@@ -1,7 +1,14 @@
 import { Router } from "express";
-import { crearServicio, editarServicio, listarServicios,borrarServicio, obtenerServicioId, prueba } from "../controllers/servicios.controllers.js";
+import {
+  crearServicio,
+  editarServicio,
+  listarServicios,
+  borrarServicio,
+  obtenerServicioId,
+  prueba,
+} from "../controllers/servicios.controllers.js";
 import validacionServicio from "../middlewares/validacionServicio.js";
-
+import validacionIdServicio from "../middlewares/validacionIdServicio.js";
 
 const router = Router();
 
@@ -10,15 +17,21 @@ const router = Router();
 
 //definir los metodos que se ejecutaran en esta ruta
 //RUTA: test es de prueba (borrar luego de probar)
-router.route('/test').get(prueba)
-
+router.route("/test").get(prueba);
 
 //RUTA alta: POST, listar: GET
 //contruir la ruta: http://localhost:3000/api/servicios/
 // 1° ejecuta validacionServicio, y si esta ok ejecuta crearServicio
-router.route('/').post([validacionServicio],crearServicio).get(listarServicios)
+router
+  .route("/")
+  .post([validacionServicio], crearServicio)
+  .get(listarServicios);
 
 // ruta GET por ID
-router.route('/:id').get(obtenerServicioId).put([validacionServicio],editarServicio).delete(borrarServicio)
+router
+  .route("/:id")
+  .get(obtenerServicioId)
+  .put([validacionServicio, validacionIdServicio], editarServicio)
+  .delete([validacionIdServicio], borrarServicio);
 
-export default router
+export default router;
