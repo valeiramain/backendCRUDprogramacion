@@ -17,7 +17,7 @@ const router = Router();
 
 //definir los metodos que se ejecutaran en esta ruta
 //RUTA: test es de prueba (borrar luego de probar)
-router.route("/test").get(prueba);
+// router.route("/test").get(prueba);
 
 //RUTA alta: POST, listar: GET
 //contruir la ruta: http://localhost:3000/api/servicios/
