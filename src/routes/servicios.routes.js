@@ -9,6 +9,7 @@ import {
 } from "../controllers/servicios.controllers.js";
 import validacionServicio from "../middlewares/validacionServicio.js";
 import validacionIdServicio from "../middlewares/validacionIdServicio.js";
+import verificarJWT from "../middlewares/verificarJWT.js";
 
 const router = Router();
 
@@ -24,14 +25,14 @@ const router = Router();
 // 1° ejecuta validacionServicio, y si esta ok ejecuta crearServicio
 router
   .route("/")
-  .post([validacionServicio], crearServicio)
+  .post([verificarJWT,validacionServicio], crearServicio)
   .get(listarServicios);
 
 // ruta GET por ID
 router
   .route("/:id")
   .get([validacionIdServicio], obtenerServicioId)
-  .put([validacionIdServicio, validacionServicio], editarServicio)
-  .delete([validacionIdServicio], borrarServicio);
+  .put([verificarJWT,validacionIdServicio, validacionServicio], editarServicio)
+  .delete([verificarJWT,validacionIdServicio], borrarServicio);
 
 export default router;
