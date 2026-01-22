@@ -1,5 +1,6 @@
 import Usuario from "../models/usuario.js";
 import bcrypt from "bcrypt";
+import  generarJWT  from "../helpers/generarJWT.js";
 
 export const crearUsurio = async (req, res) => {
   try {
@@ -37,28 +38,35 @@ export const listarUsurios = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    // toma email y password del body req.body.email, req.body.password
+    // toma email y password del body req.body.email, req.body.password (esta desestructurado)
     const { email, password } = req.body;
     //verificar si el email existe en la base de datos
     const usuarioBuscado = await Usuario.findOne({ email }); // await Usuario.findOne({ email: req.body.email });
-   
+
     if (!usuarioBuscado) {
-      return res.status(404).json({ mensaje: "No se encontró al usuario" });
+      res.status(401).json({ mensaje: "Credenciales Incorrectas" });
     }
-    
-    // verificar la contraseña que envía el usuario con la que está en la base de datos
-    const passwordValido = bcrypt.compareSync(password,usuarioBuscado.password);
-    
+
+    // verificar la contraseña que envía el usuario con la que está en la base de datos (true o false)
+    const passwordValido = bcrypt.compareSync(
+      password,
+      usuarioBuscado.password,
+    );
+
     if (!passwordValido) {
       // el codigo de error 401 es de no autorizado
       return res.status(401).json({ mensaje: "Credenciales Incorrectas" });
     }
-    
-    // Si todo correcto, informar al front que debe loguear al usuario
 
-    //agregar JWT
-    res.status(200).json({ mensaje: "Inicio de sesión exitoso",nombre: usuarioBuscado.nombre });
-
+    // Si todo correcto, informar al front que debe loguear al usuario. Se envia id del usuario par generar el token
+    const token = generarJWT(usuarioBuscado._id);
+    res
+      .status(200)
+      .json({
+        mensaje: "Login exitoso",
+        nombre: usuarioBuscado.nombre,
+        token: token,
+      });
   } catch (error) {
     console.error(error);
     res
