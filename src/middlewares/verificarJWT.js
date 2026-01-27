@@ -17,10 +17,9 @@ const verificarJWT = (req, res, next) => {
     //jwt.verify verifica que el token sea valido
     const payload = jwt.verify(token, process.env.SECRETJWT);
     //puedo extrar la información del payload
-    req.idUsuario = payload.id;
+    // req.idUsuario = payload.id;
     next();
   } catch (error) {
-    console.error(error);
     console.error("Error en JWT:", error.name);
 
     if (error.name === "TokenExpiredError") {
