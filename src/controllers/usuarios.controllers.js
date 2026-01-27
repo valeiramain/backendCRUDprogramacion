@@ -1,6 +1,6 @@
 import Usuario from "../models/usuario.js";
 import bcrypt from "bcrypt";
-import  generarJWT  from "../helpers/generarJWT.js";
+// import  generarJWT  from "../helpers/generarJWT.js";
 
 export const crearUsurio = async (req, res) => {
   try {
@@ -59,13 +59,13 @@ export const login = async (req, res) => {
     }
 
     // Si todo correcto, informar al front que debe loguear al usuario. Se envia id del usuario par generar el token
-    const token = generarJWT(usuarioBuscado._id);
+    // const token = generarJWT(usuarioBuscado._id);
     res
       .status(200)
       .json({
         mensaje: "Login exitoso",
         nombre: usuarioBuscado.nombre,
-        token: token,
+        // token: token,
       });
   } catch (error) {
     console.error(error);
